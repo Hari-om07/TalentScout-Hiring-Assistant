@@ -7,7 +7,7 @@ from chatbot import generate_questions
 
 # Load OpenAI API Key
 load_dotenv()
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets["general"]["OPENAI_API_KEY"]
 
 # Check if API key is available
 if not OPENAI_API_KEY:
