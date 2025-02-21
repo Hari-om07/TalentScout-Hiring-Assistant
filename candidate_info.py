@@ -5,8 +5,12 @@ from cryptography.fernet import Fernet
 from db import get_db_connection  # Import database connection
 
 # Load environment variables
-load_dotenv()
-FERNET_KEY = os.getenv("FERNET_KEY")
+if "general" in st.secrets and "FERNET_KEY" in st.secrets["general"]:
+    FERNET_KEY = st.secrets["general"]["FERNET_KEY"]
+else:
+    from dotenv import load_dotenv
+    load_dotenv()
+    FERNET_KEY = os.getenv("FERNET_KEY")
 
 if not FERNET_KEY:
     raise ValueError("⚠️ Encryption key missing! Set FERNET_KEY in `.env` file.")
