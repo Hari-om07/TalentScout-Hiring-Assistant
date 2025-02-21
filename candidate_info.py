@@ -25,7 +25,6 @@ def decrypt_data(data):
     """Decrypts the given encrypted data using Fernet encryption."""
     return cipher_suite.decrypt(data.encode()).decode() if data else None
 
-experience = experience if experience is not None else 0
 def insert_candidate(full_name, email, phone, experience, position, location, tech_stack):
     """Insert candidate data into the database."""
     encrypted_email = encrypt_data(email)  
