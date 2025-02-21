@@ -62,6 +62,7 @@ def collect_candidate_info():
     tech_stack = st.text_area("Tech Stack (comma-separated)")
 
     if st.button("Submit Information"):
+        st.write(f"Experience Value: {experience} (Type: {type(experience)})")
         # **Validation to Prevent Errors**
         if not full_name or not email or not phone or not position or not location:
             st.error("⚠️ Please fill in all required fields!")
