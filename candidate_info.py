@@ -62,5 +62,5 @@ def collect_candidate_info():
             st.error("⚠️ Please fill in all required fields!")
             return
         
-        insert_candidate(full_name, email, phone, int(experience), position, location, tech_stack)
+        insert_candidate(full_name, email, phone, experience, position, location, tech_stack)
         st.success("✅ Candidate information has been securely saved in MySQL!")
