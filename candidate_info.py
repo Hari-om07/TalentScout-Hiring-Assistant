@@ -24,7 +24,8 @@ def encrypt_data(data):
 def decrypt_data(data):
     """Decrypts the given encrypted data using Fernet encryption."""
     return cipher_suite.decrypt(data.encode()).decode() if data else None
-
+    
+experience = 0 if experience is None else int(experience)
 def insert_candidate(full_name, email, phone, experience, position, location, tech_stack):
     """Insert candidate data into the database."""
     encrypted_email = encrypt_data(email)  
@@ -49,7 +50,7 @@ def collect_candidate_info():
     full_name = st.text_input("Full Name")
     email = st.text_input("Email Address")
     phone = st.text_input("Phone Number")
-    experience = st.number_input("Years of Experience", min_value=0, max_value=50)
+    experience = st.number_input("Years of Experience", min_value=0, max_value=50, value=0, step=1)
     position = st.text_input("Desired Position(s)")
     location = st.text_input("Current Location")
     tech_stack = st.text_area("Tech Stack (comma-separated)")
