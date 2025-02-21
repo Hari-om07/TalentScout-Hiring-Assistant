@@ -25,23 +25,6 @@ collect_candidate_info()
 # Collect tech stack input
 tech_stack_input = st.text_input("Enter Tech Stack (comma-separated)", "Python, Django")
 
-# Add a number input form
-with st.form("my_form"):
-    user_input = st.text_input("Enter a number:")
-    submit = st.form_submit_button("Submit")
-
-if submit:
-    st.write(f"Received input: {user_input}")
-
-    if user_input:  # Check if input is provided
-        try:
-            number = int(user_input)  # Convert safely
-            st.success(f"Your number is {number}")
-        except ValueError:
-            st.error("Please enter a valid number.")
-    else:
-        st.error("Number field cannot be empty!")
-
 # Generate questions when button is clicked
 if st.button("Generate Questions"):
     tech_stack = [tech.strip() for tech in tech_stack_input.split(",")]
