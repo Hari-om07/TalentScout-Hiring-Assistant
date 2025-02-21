@@ -31,6 +31,8 @@ def insert_candidate(full_name, email, phone, experience, position, location, te
         encrypted_email = encrypt_data(email)  
         encrypted_phone = encrypt_data(phone)  
 
+        experience = int(experience) if experience else 0  
+
         conn = get_db_connection()
         cursor = conn.cursor()
 
@@ -56,13 +58,13 @@ def collect_candidate_info():
     email = st.text_input("Email Address")
     phone = st.text_input("Phone Number")
     experience = st.selectbox("Years of Experience", options=list(range(0, 31)), index=0)
-    experience = int(str(experience)) if experience is not None else 0   
+    st.write(f"Debug: Experience Value = {experience}, Type = {type(experience)}")
+    experience = int(experience) if experience is not None else 0    
     position = st.text_input("Desired Position(s)")
     location = st.text_input("Current Location")
     tech_stack = st.text_area("Tech Stack (comma-separated)")
 
     if st.button("Submit Information"):
-        st.write(f"Experience Value: {experience} (Type: {type(experience)})")
         # **Validation to Prevent Errors**
         if not full_name or not email or not phone or not position or not location:
             st.error("⚠️ Please fill in all required fields!")
