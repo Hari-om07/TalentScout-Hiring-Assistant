@@ -56,6 +56,7 @@ def collect_candidate_info():
     email = st.text_input("Email Address")
     phone = st.text_input("Phone Number")
     experience = st.selectbox("Years of Experience", options=list(range(0, 31)), index=0)
+    experience = int(experience) if experience is not None else 0  
     position = st.text_input("Desired Position(s)")
     location = st.text_input("Current Location")
     tech_stack = st.text_area("Tech Stack (comma-separated)")
